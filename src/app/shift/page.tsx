@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function ShiftPage() {
   return (
     <main className="grid-bg">
-      <section className="mx-auto max-w-7xl px-4 pb-24 pt-32 sm:px-6 sm:pt-36">
+      <section className="mx-auto max-w-7xl px-4 pb-14 pt-24 sm:px-6 sm:pb-24 sm:pt-36">
         <SectionHead
           as="h1"
           n="01"

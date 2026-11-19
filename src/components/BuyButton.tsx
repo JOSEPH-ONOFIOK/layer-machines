@@ -17,7 +17,7 @@ export function BuyButton({
         title="Trading opens at launch"
       >
         {label}
-        <span className="text-[10px] tracking-[0.2em] text-bone/60">· Soon</span>
+        <span className="text-[11px] tracking-[0.16em] text-bone/60">· Soon</span>
       </span>
     );
   }

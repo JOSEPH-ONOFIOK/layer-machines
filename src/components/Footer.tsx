@@ -13,7 +13,7 @@ export function Footer() {
     <>
       <div className="meander" />
       <footer className="bg-ink">
-        <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-10 text-[11px] uppercase tracking-[0.18em] text-mute sm:flex-row sm:items-center sm:justify-between sm:px-6">
+        <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-10 text-[12px] uppercase tracking-[0.18em] text-mute sm:flex-row sm:items-center sm:justify-between sm:px-6">
           <div className="flex items-center gap-3">
             <LogoMark className="h-5 w-auto text-bone" />
             <span>
@@ -22,7 +22,7 @@ export function Footer() {
           </div>
           <div className="flex flex-wrap gap-6">
             {PAGES.map(([l, h]) => (
-              <Link key={h} href={h} className="hover:text-bone">
+              <Link key={h} href={h} className="hidden hover:text-bone sm:inline">
                 {l}
               </Link>
             ))}
@@ -40,7 +40,7 @@ export function Footer() {
             )}
           </div>
         </div>
-        <p className="mx-auto max-w-7xl px-4 pb-10 text-[10px] leading-relaxed tracking-[0.1em] text-[#55555b] sm:px-6">
+        <p className="mx-auto max-w-7xl px-4 pb-10 text-[11px] leading-relaxed text-[#6b6b72] sm:px-6">
           Not financial advice. Digital assets are volatile; only buy what you
           can afford to lose.
         </p>

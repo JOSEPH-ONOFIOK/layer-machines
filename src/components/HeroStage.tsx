@@ -43,7 +43,7 @@ export function HeroStage() {
       ref={ref}
       onPointerMove={onMove}
       onPointerLeave={() => setTilt({ x: 0, y: 0 })}
-      className="relative mx-auto aspect-[1/0.86] w-full max-w-[640px] select-none"
+      className="relative mx-auto aspect-[1/0.86] w-full max-w-[360px] select-none sm:max-w-[640px]"
     >
       {/* the plinth */}
       <div
@@ -102,7 +102,7 @@ export function HeroStage() {
               </span>
             </span>
             <span
-              className={`pointer-events-none absolute -top-2 left-1/2 -translate-x-1/2 whitespace-nowrap border border-[var(--line-2)] bg-ink/90 px-2 py-1 text-[10px] uppercase tracking-[0.18em] transition-opacity duration-200 ${
+              className={`pointer-events-none absolute -top-2 left-1/2 -translate-x-1/2 whitespace-nowrap border border-[var(--line-2)] bg-ink/90 px-2 py-1 text-[11px] uppercase tracking-[0.18em] transition-opacity duration-200 ${
                 hover === i ? "opacity-100" : "opacity-0"
               }`}
             >
@@ -111,7 +111,7 @@ export function HeroStage() {
           </button>
         );
       })}
-      <p className="absolute -bottom-2 left-0 right-0 text-center text-[10px] uppercase tracking-[0.24em] text-mute">
+      <p className="absolute -bottom-2 left-0 right-0 hidden text-center sm:block text-[11px] uppercase tracking-[0.18em] text-mute">
         Tap a machine to switch it on
       </p>
     </div>

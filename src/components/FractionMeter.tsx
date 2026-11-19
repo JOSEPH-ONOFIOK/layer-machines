@@ -42,13 +42,13 @@ export function FractionMeter() {
           style={{ ["--p" as string]: `${pct}%` }}
           aria-label={`${SITE.ticker} balance`}
         />
-        <div className="mt-1 flex justify-between text-[10px] tabular-nums text-mute">
+        <div className="mt-1 flex justify-between text-[11px] tabular-nums text-mute">
           {Array.from({ length: MAX + 1 }, (_, i) => (
             <span key={i}>{i}</span>
           ))}
         </div>
 
-        <div className="mt-6 flex flex-wrap gap-2">
+        <div className="mt-6 grid grid-cols-4 gap-2 sm:flex sm:flex-wrap">
           {[
             ["Buy 0.4", 0.4],
             ["Buy 1", 1],
@@ -59,14 +59,14 @@ export function FractionMeter() {
               key={l}
               type="button"
               onClick={() => add(d as number)}
-              className="border border-[var(--line-2)] px-3 py-2 text-[11px] uppercase tracking-[0.16em] transition-colors hover:border-bone hover:bg-bone hover:text-ink"
+              className="border border-[var(--line-2)] px-1 py-2 text-[11px] uppercase tracking-[0.08em] sm:px-3 sm:text-[12px] sm:tracking-[0.16em] transition-colors hover:border-bone hover:bg-bone hover:text-ink"
             >
               {l}
             </button>
           ))}
         </div>
 
-        <div className="mt-8 border-t border-[var(--line)] pt-5 text-[13px] leading-relaxed text-mute">
+        <div className="mt-8 border-t border-[var(--line)] pt-5 text-[15px] leading-relaxed text-mute">
           <p>
             <span className="text-bone">{whole}</span>{" "}
             {whole === 1 ? "machine" : "machines"} in your wallet.
@@ -85,7 +85,7 @@ export function FractionMeter() {
               " Buy any amount to start one."
             )}
           </p>
-          <p className="mt-3 text-[12px]">
+          <p className="mt-3 hidden text-[13px] sm:block">
             Sell below a whole number and the newest machine powers down and
             leaves. That&apos;s ERC-404: the token and the NFT are the same
             thing.
@@ -95,7 +95,7 @@ export function FractionMeter() {
 
       {/* wallet */}
       <div className="relative border border-[var(--line-2)] bg-ink-2 p-4 sm:p-6">
-        <div className="mb-4 flex items-center justify-between text-[10px] uppercase tracking-[0.2em] text-mute">
+        <div className="mb-4 flex items-center justify-between text-[11px] uppercase tracking-[0.16em] text-mute">
           <span>Wallet · 0x…you</span>
           <span className="tabular-nums">
             {whole} / {MAX} slots
@@ -143,13 +143,13 @@ export function FractionMeter() {
                         className="object-contain opacity-60 grayscale"
                       />
                     </div>
-                    <span className="absolute bottom-1 right-1 bg-ink px-1 text-[10px] tabular-nums text-bone">
+                    <span className="absolute bottom-1 right-1 bg-ink px-1 text-[11px] tabular-nums text-bone">
                       {Math.round(frac * 100)}%
                     </span>
                   </div>
                 )}
                 {!isWhole && !isPartial && (
-                  <span className="absolute inset-0 grid place-items-center text-[10px] tracking-[0.2em] text-[#3a3a3f]">
+                  <span className="absolute inset-0 grid place-items-center text-[11px] tracking-[0.16em] text-[#3a3a3f]">
                     EMPTY
                   </span>
                 )}

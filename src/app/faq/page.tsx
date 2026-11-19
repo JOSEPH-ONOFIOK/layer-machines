@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function FaqPage() {
   return (
     <main className="grid-bg">
-      <section className="mx-auto max-w-4xl px-4 pb-24 pt-32 sm:px-6 sm:pt-36">
+      <section className="mx-auto max-w-4xl px-4 pb-14 pt-24 sm:px-6 sm:pb-24 sm:pt-36">
         <SectionHead as="h1" n="01" kicker="FAQ" title="Questions." />
         <div className="border-t border-[var(--line-2)]">
           {FAQ.map((f, i) => (
@@ -20,7 +20,7 @@ export default function FaqPage() {
                 {f.q}
                 <span className="faq-plus text-xl text-mute transition-transform duration-300">+</span>
               </summary>
-              <p className="max-w-2xl pb-6 text-[14px] leading-relaxed text-mute">{f.a}</p>
+              <p className="max-w-2xl pb-6 text-[15px] leading-relaxed text-mute">{f.a}</p>
             </details>
           ))}
         </div>

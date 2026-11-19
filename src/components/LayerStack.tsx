@@ -113,15 +113,17 @@ export function LayerStack() {
 
   const m = MACHINES[pick];
   // first 15% of scroll: stack stays shut, then it blows apart
-  const open = still ? 1 : ease(clamp((p - 0.08) / 0.5));
-  const active = still ? -1 : Math.min(PLATES.length - 1, Math.floor(clamp((p - 0.12) / 0.8) * PLATES.length));
+  // phones: no long scroll, just show it exploded
+  const flat = still || compact;
+  const open = flat ? 1 : ease(clamp((p - 0.08) / 0.5));
+  const active = flat ? -1 : Math.min(PLATES.length - 1, Math.floor(clamp((p - 0.12) / 0.8) * PLATES.length));
   const gap = (compact ? 6 : 10) + open * (compact ? 26 : 40);
   const spin = 45 - open * 18;
 
   return (
-    <div ref={wrap} className="relative h-[240vh]">
-      <div className="sticky top-0 flex h-[100svh] items-center overflow-hidden">
-        <div className="mx-auto grid w-full max-w-7xl items-center gap-6 px-4 pt-16 sm:px-6 lg:grid-cols-[1.1fr_1fr] lg:gap-12">
+    <div ref={wrap} className="relative lg:h-[240vh]">
+      <div className="flex items-center overflow-hidden pb-16 lg:sticky lg:top-0 lg:h-[100svh] lg:pb-0">
+        <div className="mx-auto grid w-full max-w-7xl items-center gap-6 px-4 sm:px-6 lg:grid-cols-[1.1fr_1fr] lg:pt-16 lg:gap-12">
           {/* the stack */}
           <div className="relative mx-auto aspect-[1/0.78] w-full max-w-[560px] [perspective:1800px] lg:aspect-square">
             <div
@@ -155,7 +157,7 @@ export function LayerStack() {
               })}
             </div>
             {/* readout */}
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 flex justify-between text-[10px] uppercase tracking-[0.22em] text-mute">
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 flex justify-between text-[11px] uppercase tracking-[0.18em] text-mute">
               <span>Exploded view · Quote {m.id}</span>
               <span className="tabular-nums">Sep {Math.round(open * 100)}%</span>
             </div>
@@ -192,14 +194,14 @@ export function LayerStack() {
                     style={{ color: lit ? "var(--bone)" : undefined }}
                   >
                     <span
-                      className="text-[11px] tabular-nums tracking-[0.18em] transition-colors"
+                      className="text-[12px] tabular-nums tracking-[0.18em] transition-colors"
                       style={{ color: lit ? m.accent : "var(--mute)" }}
                     >
                       {pl.code}
                     </span>
                     <div className="min-w-0">
                       <div
-                        className={`text-[12px] uppercase tracking-[0.18em] transition-colors ${lit ? "text-bone" : "text-mute"}`}
+                        className={`text-[13px] uppercase tracking-[0.18em] transition-colors ${lit ? "text-bone" : "text-mute"}`}
                       >
                         {pl.name}
                       </div>
@@ -207,13 +209,13 @@ export function LayerStack() {
                         className="grid transition-[grid-template-rows] duration-500 ease-out"
                         style={{ gridTemplateRows: lit ? "1fr" : "0fr" }}
                       >
-                        <p className="overflow-hidden text-[12px] leading-relaxed text-mute">
+                        <p className="overflow-hidden text-[14px] leading-relaxed text-mute">
                           <span className="block pt-1.5">{pl.note}</span>
                         </p>
                       </div>
                     </div>
                     <span
-                      className={`text-right text-[12px] uppercase tracking-[0.12em] ${lit ? "text-bone" : "text-mute/70"}`}
+                      className={`text-right text-[13px] uppercase tracking-[0.12em] ${lit ? "text-bone" : "text-mute/70"}`}
                     >
                       {pl.value(m)}
                     </span>
@@ -247,7 +249,7 @@ function PlateFace({
   };
 
   const label = (
-    <span className="absolute bottom-2 left-2.5 text-[9px] uppercase tracking-[0.22em] text-bone/60">
+    <span className="absolute bottom-2 left-2.5 text-[9px] uppercase tracking-[0.18em] text-bone/60">
       {pl.code} · {pl.name}
     </span>
   );
@@ -277,7 +279,7 @@ function PlateFace({
           <div className="absolute inset-[14%] grid place-items-center border border-dashed border-white/20 text-center">
             <div>
               <div className="font-serif text-[clamp(1.4rem,5vw,2.4rem)] leading-none">404</div>
-              <div className="mt-1 text-[8px] uppercase tracking-[0.2em] text-mute">
+              <div className="mt-1 text-[8px] uppercase tracking-[0.16em] text-mute">
                 token ⇄ nft
               </div>
             </div>
@@ -316,7 +318,7 @@ function PlateFace({
               <span key={k} className="block h-[2px] w-6 bg-black/25" />
             ))}
           </div>
-          <span className="absolute bottom-2 left-2.5 text-[9px] uppercase tracking-[0.22em] text-black/55">
+          <span className="absolute bottom-2 left-2.5 text-[9px] uppercase tracking-[0.18em] text-black/55">
             {pl.code} · {pl.name}
           </span>
         </div>
@@ -332,7 +334,7 @@ function PlateFace({
             }}
           >
             <span
-              className="text-[clamp(0.6rem,2vw,0.8rem)] uppercase tracking-[0.2em]"
+              className="text-[clamp(0.6rem,2vw,0.8rem)] uppercase tracking-[0.16em]"
               style={{ color: m.accent, textShadow: `0 0 8px ${m.accent}` }}
             >
               {m.screen}
@@ -352,7 +354,7 @@ function PlateFace({
               +1
             </span>
           </div>
-          <span className="absolute left-[14%] top-[22%] max-w-[50%] text-[10px] uppercase leading-tight tracking-[0.16em] text-bone/80">
+          <span className="absolute left-[14%] top-[22%] max-w-[50%] text-[11px] uppercase leading-tight tracking-[0.16em] text-bone/80">
             {m.extra}
           </span>
           {label}
@@ -371,8 +373,8 @@ function PlateFace({
           <div className="absolute inset-[10%] border border-dashed border-white/40" />
           <div className="absolute inset-0 grid place-items-center text-center">
             <div>
-              <div className="text-[11px] uppercase tracking-[0.3em] text-bone">0x…you</div>
-              <div className="mt-1 text-[8px] uppercase tracking-[0.2em] text-mute">operator seat</div>
+              <div className="text-[12px] uppercase tracking-[0.3em] text-bone">0x…you</div>
+              <div className="mt-1 text-[8px] uppercase tracking-[0.16em] text-mute">operator seat</div>
             </div>
           </div>
           {label}

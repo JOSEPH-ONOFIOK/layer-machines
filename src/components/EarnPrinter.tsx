@@ -28,7 +28,7 @@ function Field({
   return (
     <label className="block">
       <div className="flex items-baseline justify-between">
-        <span className="kicker !text-[11px]">{label}</span>
+        <span className="kicker !text-[12px]">{label}</span>
         <span className="text-sm tabular-nums text-bone">{fmt(value)}</span>
       </div>
       <input
@@ -95,7 +95,7 @@ export function EarnPrinter() {
         >
           Print receipt
         </button>
-        <p className="text-[11px] leading-relaxed text-mute">
+        <p className="text-[13px] leading-relaxed text-mute">
           Illustration only, not a forecast. Uses a {SITE.feePct}% fee on buys
           split evenly across switched-on machines. Real payouts depend on
           volume and final contract rules.
@@ -108,12 +108,12 @@ export function EarnPrinter() {
           <div className="absolute inset-x-6 top-1/2 h-[3px] -translate-y-1/2 bg-black" />
         </div>
         <div className="-mt-2 overflow-hidden px-6">
-          <div key={run} className="receipt printing px-5 pt-6 text-[12px] uppercase tracking-[0.1em]">
+          <div key={run} className="receipt printing px-5 pt-6 text-[13px] uppercase tracking-[0.1em]">
             <div className="text-center">
               <div className="font-serif text-2xl normal-case tracking-normal">
                 Layer Machines
               </div>
-              <div className="mt-1 text-[10px] opacity-60">
+              <div className="mt-1 text-[11px] opacity-60">
                 Earnings slip · No. {String(run + 1).padStart(4, "0")}
               </div>
             </div>
@@ -142,7 +142,7 @@ export function EarnPrinter() {
               <span className="tabular-nums">{usd(r.month)}</span>
             </div>
             <div className="receipt-rule my-4" />
-            <div className="text-center text-[10px] opacity-55">
+            <div className="text-center text-[11px] opacity-55">
               Paid in {SITE.feeToken} · claim anytime
             </div>
             {/* fake barcode */}

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function MachinesPage() {
   return (
     <main className="grid-bg">
-      <section className="mx-auto max-w-7xl px-4 pb-20 pt-32 sm:px-6 sm:pt-36">
+      <section className="mx-auto max-w-7xl px-4 pb-14 pt-24 sm:px-6 sm:pb-20 sm:pt-36">
         <SectionHead
           as="h1"
           n="01"
@@ -34,7 +34,7 @@ export default function MachinesPage() {
       </section>
 
       <section id="layers" className="scroll-mt-20 border-t border-[var(--line)]">
-        <div className="mx-auto max-w-7xl px-4 pt-24 sm:px-6">
+        <div className="mx-auto max-w-7xl px-4 pt-14 sm:px-6 sm:pt-24">
           <SectionHead
             n="02"
             kicker="Built in layers"
@@ -45,7 +45,7 @@ export default function MachinesPage() {
                 all the way down.
               </>
             }
-            sub={`Keep scrolling. One machine comes apart into everything it's made of, from the ${SITE.chain} chain at the bottom to you at the top.`}
+            sub={`One machine, pulled apart into everything it's made of: the ${SITE.chain} chain at the bottom, you at the top.`}
           />
         </div>
         <LayerStack />

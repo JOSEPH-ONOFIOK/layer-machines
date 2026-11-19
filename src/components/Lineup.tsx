@@ -67,7 +67,7 @@ export function Lineup() {
         </div>
 
         <div key={m.id} className="receipt boot-in mt-6 px-6 pt-6 text-[13px]">
-          <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.2em] opacity-60">
+          <div className="flex items-center justify-between text-[12px] uppercase tracking-[0.16em] opacity-60">
             <span>Spec sheet</span>
             <span>Quote · {m.id}</span>
           </div>
@@ -81,14 +81,14 @@ export function Lineup() {
               ["Desk extra", m.extra],
               ["Supply", `1 of ${SUPPLY_TEXT}`],
             ].map(([k, v]) => (
-              <div key={k} className="flex justify-between gap-4 text-[12px]">
+              <div key={k} className="flex justify-between gap-4 text-[13px]">
                 <dt className="opacity-55">{k}</dt>
                 <dd className="text-right">{v}</dd>
               </div>
             ))}
           </dl>
           <div className="receipt-rule my-4" />
-          <p className="text-center text-[11px] uppercase tracking-[0.2em] opacity-55">
+          <p className="text-center text-[12px] uppercase tracking-[0.16em] opacity-55">
             Thank you for your service
           </p>
         </div>

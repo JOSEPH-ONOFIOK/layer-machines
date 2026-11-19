@@ -166,7 +166,7 @@ export function ShiftBoard() {
             href="#timecard"
             className="flex items-center justify-between gap-3 border border-[var(--line-2)] bg-ink/90 px-4 py-3 backdrop-blur-md"
           >
-            <span className="text-[10px] uppercase tracking-[0.2em] text-mute">
+            <span className="text-[11px] uppercase tracking-[0.16em] text-mute">
               {allDone && ready ? "Pass printed ↓" : "Time card"}
             </span>
             <span className="flex gap-1">
@@ -181,7 +181,7 @@ export function ShiftBoard() {
                 )),
               )}
             </span>
-            <span className="text-[12px] tabular-nums">
+            <span className="text-[13px] tabular-nums">
               {hours}/{liveHours}H
             </span>
           </a>
@@ -191,7 +191,7 @@ export function ShiftBoard() {
       {/* time card */}
       <div id="timecard" className="scroll-mt-20 lg:sticky lg:top-24 lg:self-start">
         <TimeCard s={s} done={done} hours={hours} liveHours={liveHours} allDone={allDone && ready} />
-        <div className="mt-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-2 text-[10px] uppercase tracking-[0.16em] text-mute">
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-2 text-[11px] uppercase tracking-[0.16em] text-mute">
           <span>Saved on this device only</span>
           {s.done.length > 0 && (
             <button type="button" onClick={reset} className="underline-offset-4 hover:text-bone hover:underline">
@@ -227,7 +227,7 @@ function WorkOrder({
     >
       <div className="flex items-start gap-4 p-4 sm:p-5">
         <div
-          className={`mt-0.5 grid h-7 w-7 shrink-0 place-items-center border text-[12px] transition-colors ${
+          className={`mt-0.5 grid h-7 w-7 shrink-0 place-items-center border text-[13px] transition-colors ${
             done ? "border-bone bg-bone text-ink" : "border-[var(--line-2)] text-mute"
           }`}
           aria-hidden
@@ -240,11 +240,11 @@ function WorkOrder({
               <span className="mr-2 font-normal text-mute">{t.wo}</span>
               {t.title}
             </h3>
-            <span className="text-[11px] tabular-nums tracking-[0.16em] text-mute">
+            <span className="text-[12px] tabular-nums tracking-[0.16em] text-mute">
               +{t.hours}H
             </span>
           </div>
-          <p className="mt-1 text-[12px] leading-relaxed text-mute">{t.sub}</p>
+          <p className={`mt-1 text-[15px] leading-relaxed text-mute ${locked ? "hidden sm:block" : ""}`}>{t.sub}</p>
 
           {!done && !locked && (
             <div className="mt-4">
@@ -257,17 +257,17 @@ function WorkOrder({
             </div>
           )}
           {locked && (
-            <p className="mt-3 text-[10px] uppercase tracking-[0.2em] text-mute">
-              Opens at launch · doesn&apos;t count against you
+            <p className="mt-2 text-[11px] uppercase tracking-[0.16em] text-mute sm:mt-3">
+              Opens at launch<span className="hidden sm:inline"> · doesn&apos;t count against you</span>
             </p>
           )}
           {done && t.kind === "pick" && s.machine !== null && (
-            <p className="mt-2 text-[11px] uppercase tracking-[0.16em] text-bone/80">
+            <p className="mt-2 text-[12px] uppercase tracking-[0.16em] text-bone/80">
               Station: {MACHINES[s.machine].name}
             </p>
           )}
           {done && t.kind === "wallet" && s.wallet && (
-            <p className="mt-2 text-[11px] tracking-[0.12em] text-bone/80">{short(s.wallet)}</p>
+            <p className="mt-2 text-[12px] tracking-[0.12em] text-bone/80">{short(s.wallet)}</p>
           )}
         </div>
       </div>
@@ -276,7 +276,7 @@ function WorkOrder({
 }
 
 const btn =
-  "inline-flex items-center gap-2 border px-4 py-2 text-[11px] uppercase tracking-[0.16em] transition-colors";
+  "inline-flex items-center gap-2 border px-4 py-2 text-[12px] uppercase tracking-[0.16em] transition-colors";
 
 function LinkTask({ t, onDone }: { t: Task; onDone: () => void }) {
   const [wait, setWait] = useState<number | null>(null);
@@ -431,7 +431,7 @@ function BootTask({ onDone }: { onDone: () => void }) {
       </div>
       <div className="mt-3 flex items-center justify-between gap-3">
         <span
-          className={`text-[10px] uppercase tracking-[0.2em] ${
+          className={`text-[11px] uppercase tracking-[0.16em] ${
             phase === "fault" ? "text-[#e06060]" : phase === "ok" ? "text-bone" : "text-mute"
           } ${phase === "show" ? "caret" : ""}`}
         >
@@ -475,7 +475,7 @@ function WalletTask({ onDone }: { onDone: (w: string) => void }) {
         autoComplete="off"
         aria-label="EVM wallet address"
         aria-invalid={err}
-        className={`min-w-0 flex-1 border bg-ink px-3 py-2 text-[12px] tracking-[0.06em] outline-none placeholder:text-[#4a4a50] focus:border-bone ${
+        className={`min-w-0 flex-1 border bg-ink px-3 py-2 text-[13px] tracking-[0.06em] outline-none placeholder:text-[#4a4a50] focus:border-bone ${
           err ? "shake border-[#d14b4b]" : "border-[var(--line-2)]"
         }`}
       />
@@ -488,7 +488,7 @@ function WalletTask({ onDone }: { onDone: (w: string) => void }) {
         File it
       </button>
       {err && (
-        <span className="text-[10px] uppercase tracking-[0.18em] text-[#e06060] sm:hidden">
+        <span className="text-[11px] uppercase tracking-[0.18em] text-[#e06060] sm:hidden">
           Needs a 0x address, 42 characters
         </span>
       )}
@@ -524,7 +524,7 @@ function TimeCard({
 
   return (
     <div className="receipt px-5 pt-5 sm:px-6 sm:pt-6">
-      <div className="flex items-start justify-between text-[10px] uppercase tracking-[0.2em]">
+      <div className="flex items-start justify-between text-[11px] uppercase tracking-[0.16em]">
         <div>
           <div className="font-semibold">Time card</div>
           <div className="opacity-60">Layer Machines · Floor 1</div>
@@ -539,7 +539,7 @@ function TimeCard({
 
       <div className="flex items-end justify-between">
         <div>
-          <div className="text-[10px] uppercase tracking-[0.2em] opacity-60">Hours logged</div>
+          <div className="text-[11px] uppercase tracking-[0.16em] opacity-60">Hours logged</div>
           <div className="font-serif text-6xl leading-none tabular-nums">
             {hours}
             <span className="text-2xl opacity-40">/{liveHours}</span>
@@ -580,9 +580,9 @@ function TimeCard({
         ))}
       </div>
 
-      <div className="receipt-rule my-4" />
+      <div className="receipt-rule my-4 hidden sm:block" />
 
-      <div className="space-y-1 text-[10px] uppercase tracking-[0.16em]">
+      <div className="hidden space-y-1 text-[11px] uppercase tracking-[0.16em] sm:block">
         {TASKS.map((t) => (
           <div key={t.id} className="flex justify-between gap-3">
             <span className={done.has(t.id) ? "" : "opacity-45"}>
@@ -594,7 +594,7 @@ function TimeCard({
           </div>
         ))}
       </div>
-      <p className="mt-4 text-center text-[9px] uppercase tracking-[0.24em] opacity-50">
+      <p className="mt-4 text-center text-[9px] uppercase tracking-[0.18em] opacity-50">
         Full shift prints your pass
       </p>
     </div>
@@ -622,19 +622,19 @@ function ShiftPass({ s }: { s: Saved }) {
         }}
       />
       <div className="relative">
-        <div className="flex items-start justify-between text-[10px] uppercase tracking-[0.22em] text-mute">
+        <div className="flex items-start justify-between text-[11px] uppercase tracking-[0.18em] text-mute">
           <span>Shift pass</span>
           <span>{SITE.standard} · {SITE.chain}</span>
         </div>
 
         <div className="mt-5 grid grid-cols-[1fr_auto] items-end gap-4">
           <div>
-            <div className="text-[10px] uppercase tracking-[0.22em] text-mute">Operator</div>
+            <div className="text-[11px] uppercase tracking-[0.18em] text-mute">Operator</div>
             <div className="font-serif text-[clamp(3rem,10vw,4.5rem)] leading-none tabular-nums">
               #{no}
             </div>
             <div
-              className="stamp mt-4 inline-block border-2 px-3 py-1 text-[12px] font-semibold uppercase tracking-[0.24em]"
+              className="stamp mt-4 inline-block border-2 px-3 py-1 text-[13px] font-semibold uppercase tracking-[0.18em]"
               style={{ borderColor: m.accent, color: m.accent }}
             >
               Clocked in
@@ -652,7 +652,7 @@ function ShiftPass({ s }: { s: Saved }) {
           </div>
         </div>
 
-        <dl className="mt-6 grid grid-cols-2 gap-x-6 gap-y-3 border-t border-[var(--line-2)] pt-4 text-[11px] uppercase tracking-[0.14em]">
+        <dl className="mt-6 grid grid-cols-2 gap-x-6 gap-y-3 border-t border-[var(--line-2)] pt-4 text-[12px] uppercase tracking-[0.14em]">
           {[
             ["Station", m.name],
             ["Payroll", s.wallet ? short(s.wallet) : "—"],
@@ -660,7 +660,7 @@ function ShiftPass({ s }: { s: Saved }) {
             ["Status", "On shift"],
           ].map(([k, v]) => (
             <div key={k}>
-              <dt className="text-[9px] tracking-[0.22em] text-mute">{k}</dt>
+              <dt className="text-[9px] tracking-[0.18em] text-mute">{k}</dt>
               <dd className={`mt-0.5 truncate ${k === "Payroll" ? "normal-case" : ""}`}>{v}</dd>
             </div>
           ))}

@@ -5,7 +5,7 @@ export function NextPage({ href, label, title }: { href: string; label: string; 
   return (
     <Link
       href={href}
-      className="group mx-auto mb-16 flex max-w-7xl items-center justify-between gap-6 border-y border-[var(--line-2)] px-4 py-8 transition-colors hover:bg-ink-2 sm:px-6"
+      className="group mx-auto mb-10 flex sm:mb-16 max-w-7xl items-center justify-between gap-6 border-y border-[var(--line-2)] px-4 py-6 transition sm:py-8-colors hover:bg-ink-2 sm:px-6"
     >
       <div>
         <div className="kicker">Next · {label}</div>

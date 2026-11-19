@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function EarnPage() {
   return (
     <main className="grid-bg">
-      <section id="meter" className="mx-auto max-w-7xl px-4 pb-24 pt-32 sm:px-6 sm:pt-36">
+      <section id="meter" className="mx-auto max-w-7xl px-4 pb-14 pt-24 sm:px-6 sm:pb-24 sm:pt-36">
         <SectionHead
           as="h1"
           n="01"
@@ -34,7 +34,7 @@ export default function EarnPage() {
       </section>
 
       <section id="earn" className="border-y border-[var(--line)] bg-ink/70">
-        <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6">
+        <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-24">
           <SectionHead
             n="02"
             kicker="Earn"

@@ -17,7 +17,7 @@ export function Nav() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
         <Link href="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
           <LogoMark className="h-7 w-auto text-bone" />
-          <span className="text-[13px] font-semibold uppercase tracking-[0.24em]">
+          <span className="text-[13px] font-semibold uppercase tracking-[0.18em]">
             Layer Machines
           </span>
         </Link>
@@ -29,7 +29,7 @@ export function Nav() {
                 key={h}
                 href={h}
                 aria-current={on ? "page" : undefined}
-                className={`relative text-[12px] uppercase tracking-[0.18em] transition-colors hover:text-bone ${
+                className={`relative text-[13px] uppercase tracking-[0.18em] transition-colors hover:text-bone ${
                   on ? "text-bone" : "text-mute"
                 }`}
               >
@@ -40,7 +40,7 @@ export function Nav() {
           })}
         </nav>
         <div className="flex items-center gap-3">
-          <BuyButton className="!hidden !px-4 !py-2 !text-[11px] sm:!inline-flex" />
+          <BuyButton className="!hidden !px-4 !py-2 !text-[12px] sm:!inline-flex" />
           <button
             type="button"
             onClick={() => setOpen((o) => !o)}
@@ -66,7 +66,7 @@ export function Nav() {
               key={h}
               href={h}
               onClick={() => setOpen(false)}
-              className={`flex items-center justify-between border-b border-[var(--line)] py-4 text-[13px] uppercase tracking-[0.2em] ${
+              className={`flex items-center justify-between border-b border-[var(--line)] py-4 text-[13px] uppercase tracking-[0.16em] ${
                 path === h ? "text-bone" : "text-mute"
               }`}
             >
