@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Mono, Libre_Caslon_Display } from "next/font/google";
 import "./globals.css";
 import { SITE, SUPPLY_TEXT } from "@/lib/site";
+import { Nav } from "@/components/Nav";
+import { Footer } from "@/components/Footer";
 
 const display = Libre_Caslon_Display({
   weight: "400",
@@ -20,7 +22,10 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   ),
-  title: "Layer Machines · Own › Rent › Earn",
+  title: {
+    default: "Layer Machines · Own › Rent › Earn",
+    template: "%s · Layer Machines",
+  },
   description,
   openGraph: {
     title: "Layer Machines",
@@ -36,7 +41,11 @@ export const viewport: Viewport = { themeColor: "#0a0a0b" };
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${display.variable} ${plex.variable}`}>
-      <body>{children}</body>
+      <body>
+        <Nav />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

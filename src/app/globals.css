@@ -37,7 +37,8 @@ body {
   color: var(--bone);
   font-family: var(--font-plex), ui-monospace, monospace;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  /* clip, not hidden: hidden makes body a scroll container and kills sticky */
+  overflow-x: clip;
 }
 
 ::selection {
@@ -194,7 +195,54 @@ details[open] .faq-plus {
   transform: rotate(45deg);
 }
 
+/* exploded layer stack */
+.stack-plate {
+  width: clamp(150px, 40vw, 280px);
+  height: clamp(150px, 40vw, 280px);
+  transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.15);
+}
+
+/* shift board: punch card holes */
+@keyframes punch {
+  0% { transform: scale(1.8); opacity: 0; }
+  55% { transform: scale(0.82); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.punched {
+  animation: punch 0.42s cubic-bezier(0.3, 1.4, 0.5, 1) both;
+}
+
+@keyframes stamp {
+  0% { transform: rotate(-14deg) scale(2.4); opacity: 0; }
+  60% { transform: rotate(-8deg) scale(0.92); opacity: 1; }
+  100% { transform: rotate(-8deg) scale(1); opacity: 1; }
+}
+.stamp {
+  animation: stamp 0.5s cubic-bezier(0.3, 1.3, 0.5, 1) both;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+.shake {
+  animation: shake 0.36s ease-in-out;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .stack-plate {
+    transition: none;
+  }
+  .stamp {
+    animation: none !important;
+    transform: rotate(-8deg) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .punched,
+  .shake,
   .bob,
   .marquee-track,
   .printing,

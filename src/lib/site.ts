@@ -19,6 +19,14 @@ export const SITE = {
   contract: "" as string,
 } as const;
 
+/** Site pages, used by the nav and footer. */
+export const PAGES = [
+  ["Machines", "/machines"],
+  ["Earn", "/earn"],
+  ["Shift", "/shift"],
+  ["FAQ", "/faq"],
+] as const;
+
 export const SUPPLY_TEXT = SITE.supply.toLocaleString("en-US");
 
 export type Machine = {
@@ -120,6 +128,9 @@ export const STEPS = [
     lines: ["FEE ON EVERY BUY", "SPLIT ACROSS MACHINES", "CLAIM ANYTIME"],
   },
 ];
+
+/** Text for the "post your shift" task and the finished pass. */
+export const SHIFT_POST = `Clocked in at ${SITE.name}. ${SUPPLY_TEXT} machines, ${SITE.standard} on ${SITE.chain}. Own › Rent › Earn`;
 
 export const FAQ = [
   {
